@@ -86,9 +86,9 @@
 </head>
 <body onload="draw()">
 
-<!-- <div class="text-center" style="font-color:white;background-color: rgba(0,0,0,0.8);">
+<div class="text-center" style="font-color:white;background-color: rgba(0,0,0,0.8);">
   <span style="color: white;font-size: 30px;">Visualizer</span>
-</div> -->
+</div>
   
 <div class="container-fluid">
   <div class="row">
@@ -111,7 +111,6 @@
             </select>
           </td>
         </tr>
-        <br>
         <tr>
           <td>Response</td>
           <td>
@@ -134,7 +133,7 @@
 
       <h3><b>Search Dall Details</b></h3>
 
-      <table class="table table-responsive table-dark">
+      <table class="table table-borderless">
 
         <tbody>
           <tr>
@@ -153,7 +152,8 @@
            
 
             <h3><b>Manual Cypher query</b></h3> 
-            <textarea rows="3" cols="35" id="cypher"></textarea><br>
+            <textarea rows="2" cols="35" id="cypher"></textarea><br>
+            <br>
         <input class="btn btn-success" type="submit" value="Submit" id="reload">
         <input class="btn btn-success" type="submit" value="Stabilize" id="stabilize">
 
