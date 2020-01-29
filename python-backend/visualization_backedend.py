@@ -1,4 +1,5 @@
-import regex as regex
+
+#import regex as regex
 from neo4j.v1 import GraphDatabase
 import csv
 import neo4j
