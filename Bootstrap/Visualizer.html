@@ -28,7 +28,6 @@
        #viz {
            max-width: 100%;
            height: 600px;
-           /*border: 1px solid white;*/
            font: 22px arial;
            display: inline-block;
            float: left;
@@ -36,7 +35,7 @@
 /*        #Buttons {
             padding-left: 10px;
             display: inline-block;
-            float: left;            
+            float: left;
         }*/
   </style>
   <!-- style setting ended -->
@@ -89,14 +88,16 @@
 <div class="text-center" style="font-color:white;background-color: rgba(0,0,0,0.8);">
   <span style="color: white;font-size: 30px;">Visualizer</span>
 </div>
-  
+
 <div class="container-fluid ">
   <div class="row">
+<<<<<<< HEAD
     <div class="col-sm-8" style="background-color: rgba(255,255,255,0.7);">
+=======
+    <div class="col-sm-8" id="viz" style="background-color: rgba(1,1,1,0);">
+>>>>>>> 864218921d4f39db88a1378ac7909305498f5f50
     <!-- Frame -->
-      <div id="viz">
-      </div>
-    </div>
+          </div>
     <div class="col-sm-4 text-white"  >
       <!-- Button Functions -->
       <table class="table table-borderless table-dark">
@@ -122,13 +123,13 @@
           </td>
         </tr>
         <tr>
-          <td>Search number</td>  
+          <td>Search number</td>
           <td>
             <input type="string" id="mob_no">
             <button class="btn btn-success" id="mob_search" >Search</button>
           </td>
         </tr>
-        </tbody>  
+        </tbody>
       </table>
 
       <h3><b>Search Call Details</b></h3>
@@ -149,9 +150,9 @@
           </tr>
         </tbody>
       </table>
-           
 
-            <h3><b>Manual Cypher query</b></h3> 
+
+            <h3><b>Manual Cypher query</b></h3>
             <textarea rows="2" cols="35" id="cypher"></textarea><br>
             <br>
         <input class="btn btn-success" type="submit" value="Submit" id="reload">
@@ -163,7 +164,10 @@
 
 </body>
 <script>
-    //fire manual query    
+    vis.on('click', 'node', function(evt){
+      console.log( 'clicked ' + this.id() );
+    });
+    //fire manual query
     $("#reload").click(function() {
 
         var cypher = $("#cypher").val();
@@ -176,26 +180,26 @@
         }
 
     });
-    
+
     //stablize the graph
     $("#stabilize").click(function() {
         viz.stabilize();
     })
-        
+
     //search a mobile number
     $("#mob_search").click(function() {
         var no = $("#mob_no").val();
         var cypher= 'match (n)-[r]-(b) where n.number="'+no+'" return n,r,b';
             viz.renderWithCypher(cypher);
-        
+
         console.log("searching number "+no);
     });
-    
-    //search a number in time period 
+
+    //search a number in time period
     $("#time_search").click(function() {
         var st = $("#start_time").val();
         var et = $("#end_time").val();
-        
+
         /*if (cypher.length > 3) {
             viz.renderWithCypher(cypher);
         } else {
@@ -211,23 +215,23 @@
                  var cypher= 'MATCH (n),(n1)-[r]->(n2) RETURN r,n,n1,n2';
              }
              else{
-                var cypher= 'MATCH p=()-[r:'+selectedVal+']->() RETURN p'; 
+                var cypher= 'MATCH p=()-[r:'+selectedVal+']->() RETURN p';
              }
                 viz.renderWithCypher(cypher);
-             console.log(""+ selectedVal); 
-             
+             console.log(""+ selectedVal);
+
          });
-        
+
          $("#type").on("change", function(){
                 var selectedVal = $(this).find(':selected').val();
              if(selectedVal== 'default'){
                  var cypher= 'MATCH (n),(n1)-[r]->(n2) RETURN r,n,n1,n2';
              }
              else{
-                var cypher= 'MATCH (n)-[r]-(a) WHERE r.typeb="'+selectedVal+'" RETURN n,r,a'; 
+                var cypher= 'MATCH (n)-[r]-(a) WHERE r.typeb="'+selectedVal+'" RETURN n,r,a';
              }
                 viz.renderWithCypher(cypher);
-             console.log(""+ selectedVal); 
+             console.log(""+ selectedVal);
          });
 
 </script>
